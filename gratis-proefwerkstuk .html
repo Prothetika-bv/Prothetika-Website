@@ -246,7 +246,7 @@ footer { padding: 48px; border-top: 1px solid rgba(255,255,255,0.08); display: f
         <textarea id="opmerkingen" name="opmerkingen" placeholder="Kleur, maat, bijzonderheden over de patiënt of de casus..."></textarea>
       </div>
 
-      <button type="submit" class="btn-submit" id="submit-btn">Proefwerkstuk aanvragen →</button>
+      <button type="button" class="btn-submit" id="submit-btn" onclick="submitForm()">Proefwerkstuk aanvragen →</button>
       <p class="form-note">Door dit formulier in te sturen gaat u akkoord met de voorwaarden onderaan deze pagina.<br>Wij nemen binnen één werkdag contact op via uw e-mailadres.</p>
     </form>
   </div>
@@ -287,37 +287,40 @@ document.getElementById('file-input').addEventListener('change', function() {
   }
 });
 
-// Form submit via Formspree
-document.getElementById('proefwerkstuk-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-
-  var form = this;
-  var btn = document.getElementById('submit-btn');
+function submitForm() {
+  var naam = document.getElementById('naam').value;
   var email = document.getElementById('email').value;
+  var praktijk = document.getElementById('praktijk').value;
+  var product = document.getElementById('product').value;
 
-  // Loading state
+  if (!naam || !email || !praktijk || !product) {
+    alert('Vul alle verplichte velden in.');
+    return;
+  }
+
+  var btn = document.getElementById('submit-btn');
   btn.textContent = 'Bezig met verzenden...';
   btn.disabled = true;
   btn.style.opacity = '0.6';
 
+  var form = document.getElementById('proefwerkstuk-form');
+  var data = new FormData(form);
+
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'https://formspree.io/f/mdenlobr');
+  xhr.open('POST', 'https://formspree.io/f/mdenlobr', true);
   xhr.setRequestHeader('Accept', 'application/json');
 
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState === XMLHttpRequest.DONE) {
-      if (xhr.status === 200 || xhr.status === 201) {
-        // Success — toon bevestiging
-        document.getElementById('form-wrap').style.display = 'none';
-        document.getElementById('confirm-email').textContent = email;
-        document.getElementById('success-screen').style.display = 'flex';
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        btn.textContent = 'Proefwerkstuk aanvragen →';
-        btn.disabled = false;
-        btn.style.opacity = '1';
-        alert('Er ging iets mis. Mail ons direct op info@prothetika.com');
-      }
+  xhr.onload = function() {
+    if (xhr.status >= 200 && xhr.status < 300) {
+      document.getElementById('form-wrap').style.display = 'none';
+      document.getElementById('confirm-email').textContent = email;
+      document.getElementById('success-screen').style.display = 'flex';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      btn.textContent = 'Proefwerkstuk aanvragen →';
+      btn.disabled = false;
+      btn.style.opacity = '1';
+      alert('Verzending mislukt (status ' + xhr.status + '). Mail naar info@prothetika.com');
     }
   };
 
@@ -325,11 +328,11 @@ document.getElementById('proefwerkstuk-form').addEventListener('submit', functio
     btn.textContent = 'Proefwerkstuk aanvragen →';
     btn.disabled = false;
     btn.style.opacity = '1';
-    alert('Geen verbinding. Mail ons direct op info@prothetika.com');
+    alert('Geen verbinding. Mail naar info@prothetika.com');
   };
 
-  xhr.send(new FormData(form));
-});
+  xhr.send(data);
+}
 
 // Scroll animations
 var obs = new IntersectionObserver(function(entries) {
