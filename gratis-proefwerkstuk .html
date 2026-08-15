@@ -246,16 +246,12 @@ footer { padding: 48px; border-top: 1px solid rgba(255,255,255,0.08); display: f
         <textarea id="opmerkingen" name="opmerkingen" placeholder="Kleur, maat, bijzonderheden over de patiënt of de casus..."></textarea>
       </div>
 
-      <button type="submit" class="btn-submit">Proefwerkstuk aanvragen →</button>
+      <button type="submit" class="btn-submit" id="submit-btn">Proefwerkstuk aanvragen →</button>
       <p class="form-note">Door dit formulier in te sturen gaat u akkoord met de voorwaarden onderaan deze pagina.<br>Wij nemen binnen één werkdag contact op via uw e-mailadres.</p>
     </form>
   </div>
 
-  <div id="success-msg" style="display:none;text-align:center;padding:60px 24px;border:1px solid rgba(255,255,255,0.12);background:var(--near-black);margin-top:24px;">
-    <div style="font-size:40px;margin-bottom:20px;">✓</div>
-    <h3 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;letter-spacing:-0.02em;margin-bottom:12px;">Aanvraag verzonden.</h3>
-    <p style="font-size:15px;color:var(--light);font-weight:300;line-height:1.7;">Wij hebben uw aanvraag ontvangen en nemen binnen één werkdag contact op.<br>U ontvangt een bevestiging op <strong id="confirm-email" style="color:var(--white);"></strong></p>
-  </div>
+  <div id="success-msg" style="display:none;"></div>
 </section>
 
 <section class="voorwaarden fade-in">
@@ -283,63 +279,73 @@ footer { padding: 48px; border-top: 1px solid rgba(255,255,255,0.08); display: f
 
 <script>
 // File upload display
-const fileInput = document.getElementById('file-input');
-const fileName = document.getElementById('file-name');
-const fileZone = document.getElementById('file-zone');
-
-fileInput.addEventListener('change', () => {
-  if (fileInput.files.length > 0) {
-    fileName.textContent = '✓ ' + fileInput.files[0].name;
-    fileName.style.display = 'block';
-    fileZone.style.borderColor = 'rgba(255,255,255,0.5)';
+document.getElementById('file-input').addEventListener('change', function() {
+  if (this.files.length > 0) {
+    document.getElementById('file-name').textContent = '✓ ' + this.files[0].name;
+    document.getElementById('file-name').style.display = 'block';
+    document.getElementById('file-zone').style.borderColor = 'rgba(255,255,255,0.5)';
   }
 });
 
-// Form submit
-document.getElementById('proefwerkstuk-form').addEventListener('submit', async function(e) {
+// Form submit via Formspree
+document.getElementById('proefwerkstuk-form').addEventListener('submit', function(e) {
   e.preventDefault();
 
-  const btn = this.querySelector('.btn-submit');
-  const email = document.getElementById('email').value;
+  var form = this;
+  var btn = document.getElementById('submit-btn');
+  var email = document.getElementById('email').value;
 
-  btn.textContent = 'Verzenden...';
+  // Loading state
+  btn.textContent = 'Bezig met verzenden...';
   btn.disabled = true;
   btn.style.opacity = '0.6';
 
-  try {
-    const res = await fetch('https://formspree.io/f/mdenlobr', {
-      method: 'POST',
-      body: new FormData(this),
-      headers: { 'Accept': 'application/json' }
-    });
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'https://formspree.io/f/mdenlobr');
+  xhr.setRequestHeader('Accept', 'application/json');
 
-    if (res.ok) {
-      document.getElementById('form-wrap').style.display = 'none';
-      const msg = document.getElementById('success-msg');
-      document.getElementById('confirm-email').textContent = email;
-      msg.style.display = 'block';
-      msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    } else {
-      const json = await res.json();
-      btn.textContent = 'Proefwerkstuk aanvragen →';
-      btn.disabled = false;
-      btn.style.opacity = '1';
-      alert('Verzending mislukt. Probeer opnieuw of mail naar info@prothetika.com');
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200 || xhr.status === 201) {
+        // Success — toon bevestiging
+        document.getElementById('form-wrap').style.display = 'none';
+        document.getElementById('confirm-email').textContent = email;
+        document.getElementById('success-screen').style.display = 'flex';
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        btn.textContent = 'Proefwerkstuk aanvragen →';
+        btn.disabled = false;
+        btn.style.opacity = '1';
+        alert('Er ging iets mis. Mail ons direct op info@prothetika.com');
+      }
     }
-  } catch(err) {
+  };
+
+  xhr.onerror = function() {
     btn.textContent = 'Proefwerkstuk aanvragen →';
     btn.disabled = false;
     btn.style.opacity = '1';
-    alert('Geen verbinding. Probeer opnieuw of mail naar info@prothetika.com');
-  }
+    alert('Geen verbinding. Mail ons direct op info@prothetika.com');
+  };
+
+  xhr.send(new FormData(form));
 });
 
 // Scroll animations
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+var obs = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
-document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
-setTimeout(() => document.querySelector('.hero').classList.add('visible'), 50);
+document.querySelectorAll('.fade-in').forEach(function(el) { obs.observe(el); });
+setTimeout(function() { document.querySelector('.hero').classList.add('visible'); }, 50);
 </script>
+
+<!-- Bevestigingsscherm -->
+<div id="success-screen" style="display:none;position:fixed;inset:0;background:#0A0A0A;z-index:999;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:48px;">
+  <div style="font-size:64px;margin-bottom:32px;opacity:0.9;">✓</div>
+  <div style="font-family:'Space Grotesk',sans-serif;font-size:clamp(32px,5vw,56px);font-weight:700;letter-spacing:-0.04em;line-height:1.0;margin-bottom:24px;">Aanvraag<br>ontvangen.</div>
+  <p style="font-size:17px;color:#AFAFAF;font-weight:300;line-height:1.75;max-width:480px;margin-bottom:8px;">Wij nemen binnen één werkdag contact op ter bevestiging.</p>
+  <p style="font-size:15px;color:#6B6B6B;font-weight:300;margin-bottom:48px;">Bevestiging wordt verstuurd naar <strong id="confirm-email" style="color:#fff;"></strong></p>
+  <a href="index.html" style="font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#0A0A0A;background:#fff;padding:14px 32px;text-decoration:none;display:inline-block;">Terug naar home</a>
+</div>
 </body>
 </html>
