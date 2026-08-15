@@ -176,7 +176,7 @@ footer { padding: 48px; border-top: 1px solid rgba(255,255,255,0.08); display: f
   <p class="sub">Vul de gegevens in en upload uw STL-bestand. Wij nemen binnen één werkdag contact op ter bevestiging.</p>
 
   <div id="form-wrap">
-    <form id="proefwerkstuk-form" action="https://formspree.io/f/xjybojew" method="POST" enctype="multipart/form-data">
+    <form id="proefwerkstuk-form" action="https://formspree.io/f/mdenlobr" method="POST" enctype="multipart/form-data">
       <input type="hidden" name="_replyto" value="info@prothetika.com">
       <input type="hidden" name="_subject" value="Nieuw proefwerkstuk aanvraag — Prothetika">
       <input type="hidden" name="_next" value="https://www.prothetika.com/gratis-proefwerkstuk.html?bedankt=1">
@@ -251,9 +251,10 @@ footer { padding: 48px; border-top: 1px solid rgba(255,255,255,0.08); display: f
     </form>
   </div>
 
-  <div class="success-msg" id="success-msg">
-    <h3>Aanvraag ontvangen.</h3>
-    <p>Wij nemen binnen één werkdag contact op ter bevestiging.<br>U hoort snel van ons via <span id="confirm-email"></span></p>
+  <div id="success-msg" style="display:none;text-align:center;padding:60px 24px;border:1px solid rgba(255,255,255,0.12);background:var(--near-black);margin-top:24px;">
+    <div style="font-size:40px;margin-bottom:20px;">✓</div>
+    <h3 style="font-family:'Space Grotesk',sans-serif;font-size:28px;font-weight:700;letter-spacing:-0.02em;margin-bottom:12px;">Aanvraag verzonden.</h3>
+    <p style="font-size:15px;color:var(--light);font-weight:300;line-height:1.7;">Wij hebben uw aanvraag ontvangen en nemen binnen één werkdag contact op.<br>U ontvangt een bevestiging op <strong id="confirm-email" style="color:var(--white);"></strong></p>
   </div>
 </section>
 
@@ -281,6 +282,7 @@ footer { padding: 48px; border-top: 1px solid rgba(255,255,255,0.08); display: f
 </footer>
 
 <script>
+// File upload display
 const fileInput = document.getElementById('file-input');
 const fileName = document.getElementById('file-name');
 const fileZone = document.getElementById('file-zone');
@@ -293,44 +295,46 @@ fileInput.addEventListener('change', () => {
   }
 });
 
-// Show success message if redirected back with ?bedankt=1
-if (window.location.search.includes('bedankt=1')) {
-  document.getElementById('form-wrap').style.display = 'none';
-  const msg = document.getElementById('success-msg');
-  msg.style.display = 'block';
-}
-
-const form = document.getElementById('proefwerkstuk-form');
-form.addEventListener('submit', async (e) => {
+// Form submit
+document.getElementById('proefwerkstuk-form').addEventListener('submit', async function(e) {
   e.preventDefault();
-  const data = new FormData(form);
+
+  const btn = this.querySelector('.btn-submit');
   const email = document.getElementById('email').value;
-  const btn = form.querySelector('.btn-submit');
-  btn.textContent = 'Versturen...';
+
+  btn.textContent = 'Verzenden...';
   btn.disabled = true;
+  btn.style.opacity = '0.6';
+
   try {
-    const res = await fetch(form.action, {
+    const res = await fetch('https://formspree.io/f/mdenlobr', {
       method: 'POST',
-      body: data,
+      body: new FormData(this),
       headers: { 'Accept': 'application/json' }
     });
+
     if (res.ok) {
       document.getElementById('form-wrap').style.display = 'none';
       const msg = document.getElementById('success-msg');
       document.getElementById('confirm-email').textContent = email;
       msg.style.display = 'block';
+      msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
     } else {
+      const json = await res.json();
       btn.textContent = 'Proefwerkstuk aanvragen →';
       btn.disabled = false;
-      alert('Er is iets misgegaan. Probeer het opnieuw of mail naar info@prothetika.com');
+      btn.style.opacity = '1';
+      alert('Verzending mislukt. Probeer opnieuw of mail naar info@prothetika.com');
     }
   } catch(err) {
     btn.textContent = 'Proefwerkstuk aanvragen →';
     btn.disabled = false;
-    alert('Er is iets misgegaan. Probeer het opnieuw of mail naar info@prothetika.com');
+    btn.style.opacity = '1';
+    alert('Geen verbinding. Probeer opnieuw of mail naar info@prothetika.com');
   }
 });
 
+// Scroll animations
 const obs = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
 }, { threshold: 0.1 });
