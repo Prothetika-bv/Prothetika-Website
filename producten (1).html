@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Producten — Prothetika | Tandprotheses & Restauraties</title>
+  <meta name="description" content="Bekijk het volledige assortiment van Prothetika: volledige protheses, partiële protheses, kroon & brug, metalen onderstructuren, splints en reparatie.">
+  <meta name="keywords" content="tandprothese producten, volledige prothese, partiële prothese, kroon brug, splint, reparatie, tandtechniek">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Prothetika B.V.">
+  <link rel="canonical" href="https://www.prothetika.com/producten.html">
+  <!-- Open Graph -->
+  <meta property="og:title" content="Producten — Prothetika | Tandprotheses & Restauraties">
+  <meta property="og:description" content="Bekijk het volledige assortiment van Prothetika: volledige protheses, partiële protheses, kroon & brug, metalen onderstructuren, splints en reparatie.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.prothetika.com/producten.html">
+  <meta property="og:locale" content="nl_NL">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root { --black: #0A0A0A; --near-black: #111111; --dark: #1C1C1C; --muted: #6B6B6B; --light: #AFAFAF; --off-white: #F0F0F0; --white: #FFFFFF; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Inter', sans-serif; background: var(--black); color: var(--white); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 24px 48px; border-bottom: 1px solid rgba(255,255,255,0.07); background: rgba(10,10,10,0.9); backdrop-filter: blur(12px); }
+.logo { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; letter-spacing: -0.03em; color: var(--white); text-decoration: none; }
+.logo span { color: var(--muted); font-weight: 300; }
+.nav-links { display: flex; gap: 40px; list-style: none; }
+.nav-links a { font-size: 13px; color: var(--light); text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--white); }
+.nav-cta { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--black); background: var(--white); padding: 10px 24px; text-decoration: none; transition: background 0.2s; }
+.nav-cta:hover { background: var(--off-white); }
+.page-hero { padding: 160px 48px 80px; border-bottom: 1px solid rgba(255,255,255,0.07); display: grid; grid-template-columns: 1fr 1fr; align-items: end; gap: 48px; }
+.eyebrow { font-size: 11px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+.eyebrow::before { content: ''; display: block; width: 32px; height: 1px; background: var(--muted); }
+.page-hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(52px, 6vw, 88px); font-weight: 700; line-height: 1.0; letter-spacing: -0.04em; }
+.page-hero-desc { font-size: 16px; line-height: 1.7; color: var(--light); font-weight: 300; max-width: 380px; margin-left: auto; }
+.filter-bar { padding: 0 48px; border-bottom: 1px solid rgba(255,255,255,0.07); display: flex; gap: 0; overflow-x: auto; }
+.filter-btn { font-family: 'Space Grotesk', sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); background: none; border: none; border-bottom: 2px solid transparent; padding: 20px 28px; cursor: pointer; transition: color 0.2s, border-color 0.2s; white-space: nowrap; }
+.filter-btn:hover { color: var(--white); }
+.filter-btn.active { color: var(--white); border-bottom-color: var(--white); }
+.products-section { padding: 80px 48px; }
+.products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.07); }
+.product-card { background: var(--black); padding: 48px; transition: background 0.25s; cursor: pointer; position: relative; overflow: hidden; text-decoration: none; color: inherit; display: block; }
+.product-card:hover { background: var(--near-black); }
+.product-card::after { content: ''; position: absolute; bottom: 0; left: 0; width: 0; height: 1px; background: var(--white); transition: width 0.4s cubic-bezier(0.4,0,0.2,1); }
+.product-card:hover::after { width: 100%; }
+.card-tag { font-size: 10px; font-weight: 500; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 36px; display: block; }
+.card-icon { width: 56px; height: 56px; margin-bottom: 28px; }
+.card-name { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 600; letter-spacing: -0.02em; margin-bottom: 14px; }
+.card-desc { font-size: 14px; line-height: 1.7; color: var(--light); font-weight: 300; margin-bottom: 32px; }
+.card-specs { display: flex; flex-direction: column; gap: 8px; margin-bottom: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.07); }
+.card-spec { display: flex; justify-content: space-between; font-size: 12px; }
+.spec-label { color: var(--muted); }
+.spec-value { color: var(--white); font-weight: 500; }
+.card-link { font-size: 12px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); display: flex; align-items: center; gap: 8px; }
+.card-link::after { content: '→'; transition: transform 0.2s; }
+.product-card:hover .card-link::after { transform: translateX(4px); }
+.product-card.featured { grid-column: span 2; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+.featured-badge { display: inline-block; font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--black); background: var(--white); padding: 4px 10px; margin-bottom: 20px; }
+.cta-strip { margin: 0 48px; padding: 64px; border: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+.cta-strip h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(24px, 3vw, 36px); font-weight: 700; letter-spacing: -0.03em; max-width: 480px; }
+.cta-actions { display: flex; gap: 12px; flex-shrink: 0; }
+.btn-primary { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--black); background: var(--white); border: 1px solid var(--white); padding: 13px 28px; text-decoration: none; transition: background 0.2s; display: inline-block; }
+.btn-primary:hover { background: var(--off-white); }
+.btn-ghost { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--white); background: transparent; border: 1px solid rgba(255,255,255,0.2); padding: 13px 28px; text-decoration: none; transition: border-color 0.2s; display: inline-block; }
+.btn-ghost:hover { border-color: rgba(255,255,255,0.5); }
+footer { margin-top: 80px; padding: 48px; border-top: 1px solid rgba(255,255,255,0.08); display: flex; justify-content: space-between; align-items: center; }
+.footer-logo { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; letter-spacing: -0.03em; }
+.footer-links { display: flex; gap: 32px; list-style: none; }
+.footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase; transition: color 0.2s; }
+.footer-links a:hover { color: var(--white); }
+.footer-copy { font-size: 12px; color: var(--muted); }
+.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.65s ease, transform 0.65s ease; }
+.fade-in.visible { opacity: 1; transform: none; }
+@media (max-width: 1000px) { .products-grid { grid-template-columns: 1fr 1fr; } .product-card.featured { grid-column: span 2; grid-template-columns: 1fr; } }
+@media (max-width: 700px) { nav { padding: 20px 24px; } .nav-links { display: none; } .page-hero { grid-template-columns: 1fr; padding: 120px 24px 60px; } .page-hero-desc { margin-left: 0; } .filter-bar { padding: 0 24px; } .products-section { padding: 48px 24px; } .products-grid { grid-template-columns: 1fr; } .product-card.featured { grid-column: span 1; } .cta-strip { flex-direction: column; margin: 0 24px; padding: 40px 32px; } footer { flex-direction: column; gap: 20px; padding: 32px 24px; text-align: center; } .footer-links { flex-wrap: wrap; justify-content: center; } }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="logo">Prothetika<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="producten.html" class="active">Producten</a></li>
+    <li><a href="#" title="Werkwijze — binnenkort beschikbaar">Werkwijze</a></li>
+    <li><a href="vacature-digitaal-tandtechnieker.html">Vacatures</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="gratis-proefwerkstuk.html" class="nav-cta">Gratis proefwerkstuk</a>
+</nav>
+
+<div class="page-hero fade-in">
+  <div>
+    <div class="eyebrow">Assortiment</div>
+    <h1>Elk product.<br>Één standaard.</h1>
+  </div>
+  <div style="text-align:right">
+    <p class="page-hero-desc">Van volledige prothese tot splint — elk product digitaal ontworpen en met de hand afgewerkt door onze tandtechnici in Nijmegen.</p>
+  </div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterCards('all', this)">Alle producten</button>
+  <button class="filter-btn" onclick="filterCards('uitneembaar', this)">Uitneembaar</button>
+  <button class="filter-btn" onclick="filterCards('vast', this)">Vast</button>
+  <button class="filter-btn" onclick="filterCards('therapeutisch', this)">Therapeutisch</button>
+  <button class="filter-btn" onclick="filterCards('service', this)">Service</button>
+</div>
+
+<section class="products-section">
+  <div class="products-grid">
+
+    <!-- FEATURED: Volledige prothese -->
+    <a href="product-volledige-prothese.html" class="product-card featured fade-in" data-cat="uitneembaar">
+      <div>
+        <span class="featured-badge">Meest gevraagd</span>
+        <span class="card-tag">Uitneembaar — 01</span>
+        <svg class="card-icon" viewBox="0 0 56 56" fill="none">
+          <path d="M10 34C10 21 17 12 28 10C39 12 46 21 46 34" stroke="white" stroke-width="1.5" fill="none"/>
+          <rect x="12" y="32" width="9" height="13" rx="1.5" stroke="white" stroke-width="1.5" fill="none"/>
+          <rect x="24" y="28" width="9" height="17" rx="1.5" stroke="white" stroke-width="1.5" fill="none"/>
+          <rect x="36" y="32" width="9" height="13" rx="1.5" stroke="white" stroke-width="1.5" fill="none"/>
+        </svg>
+        <div class="card-name">Volledige prothese</div>
+        <p class="card-desc">Volledige reconstructie voor tandenloze patiënten. Digitaal aangemeten op kaakstructuur, gingivakleur en esthetische wensen van de patiënt.</p>
+        <div class="card-specs">
+          <div class="card-spec"><span class="spec-label">Materiaal</span><span class="spec-value">PMMA acrylaat</span></div>
+          <div class="card-spec"><span class="spec-label">Levertijd</span><span class="spec-value">5 werkdagen</span></div>
+          <div class="card-spec"><span class="spec-label">Aanlevering</span><span class="spec-value">Scan</span></div>
+        </div>
+        <span class="card-link">Bekijk product</span>
+      </div>
+      <div>
+        <svg viewBox="0 0 260 220" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:100%;opacity:0.7;margin-top:8px">
+          <path d="M130 28 C70 28 18 70 18 128" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>
+          <path d="M46 120 C44 98 56 80 74 78 C92 76 100 94 100 114 C100 134 88 147 74 149 C56 151 48 140 46 120Z" stroke="white" stroke-width="1.4" fill="none"/>
+          <path d="M105 104 C103 84 115 67 132 65 C149 63 159 81 159 100 C159 119 148 131 132 133 C115 135 107 123 105 104Z" stroke="white" stroke-width="1.4" fill="none"/>
+          <path d="M164 120 C162 98 174 80 192 78 C210 76 220 94 220 114 C220 134 208 147 192 149 C174 151 166 140 164 120Z" stroke="white" stroke-width="1.4" fill="none"/>
+          <path d="M58 92 L74 84 L89 92" stroke="rgba(255,255,255,0.25)" stroke-width="0.8" fill="none"/>
+          <path d="M117 79 L132 71 L147 79" stroke="rgba(255,255,255,0.25)" stroke-width="0.8" fill="none"/>
+          <path d="M176 92 L192 84 L207 92" stroke="rgba(255,255,255,0.25)" stroke-width="0.8" fill="none"/>
+          <circle cx="74" cy="112" r="3" fill="white" opacity="0.7"/>
+          <circle cx="192" cy="112" r="3" fill="white" opacity="0.7" style="animation:pulse 2.4s ease-in-out 0.8s infinite"/>
+        </svg>
+      </div>
+    </a>
+
+    <!-- Partiële prothese -->
+    <a href="product-partiele-prothese.html" class="product-card fade-in" data-cat="uitneembaar" style="transition-delay:.1s">
+      <span class="card-tag">Uitneembaar — 02</span>
+      <svg class="card-icon" viewBox="0 0 56 56" fill="none">
+        <path d="M10 36C10 22 18 13 28 11C38 13 46 22 46 36" stroke="white" stroke-width="1.5" fill="none"/>
+        <rect x="12" y="34" width="9" height="12" rx="1.5" stroke="white" stroke-width="1.5" fill="none"/>
+        <rect x="24" y="30" width="9" height="16" rx="1.5" stroke="white" stroke-width="1.5" fill="none"/>
+        <path d="M37 34 Q42 28 46 36" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" fill="none" stroke-dasharray="3,2"/>
+      </svg>
+      <div class="card-name">Partiële prothese</div>
+      <p class="card-desc">Gedeeltelijk verwijderbare prothese die naadloos aansluit op het bestaand gebit. Digitaal ontworpen in PMMA voor optimale pasvorm.</p>
+      <div class="card-specs">
+        <div class="card-spec"><span class="spec-label">Materiaal</span><span class="spec-value">PMMA acrylaat</span></div>
+        <div class="card-spec"><span class="spec-label">Levertijd</span><span class="spec-value">5 werkdagen</span></div>
+        <div class="card-spec"><span class="spec-label">Aanlevering</span><span class="spec-value">Scan</span></div>
+      </div>
+      <span class="card-link">Bekijk product</span>
+    </a>
+
+    <!-- Kroon & brug -->
+    <a href="product-kroon-brug.html" class="product-card fade-in" data-cat="vast" style="transition-delay:.15s">
+      <span class="card-tag">Vast — 03</span>
+      <svg class="card-icon" viewBox="0 0 56 56" fill="none">
+        <path d="M20 14 C16 14 12 18 12 24 C12 30 15 34 19 37 L19 46 L37 46 L37 37 C41 34 44 30 44 24 C44 18 40 14 36 14 C33 14 31 16 28 18 C25 16 23 14 20 14Z" stroke="white" stroke-width="1.5" fill="none"/>
+        <path d="M15 19 L20 15 L28 13 L36 15 L41 19" stroke="rgba(255,255,255,0.35)" stroke-width="0.9" fill="none"/>
+      </svg>
+      <div class="card-name">Kroon & brug</div>
+      <p class="card-desc">Vaste keramische restauraties in e.max of zirconium. Digitaal gefreesd voor perfecte occlusie en langdurige kleurstabiliteit.</p>
+      <div class="card-specs">
+        <div class="card-spec"><span class="spec-label">Materiaal</span><span class="spec-value">e.max · Zirconium</span></div>
+        <div class="card-spec"><span class="spec-label">Levertijd</span><span class="spec-value">5 werkdagen</span></div>
+        <div class="card-spec"><span class="spec-label">Garantie</span><span class="spec-value">5 jaar</span></div>
+      </div>
+      <span class="card-link">Bekijk product</span>
+    </a>
+
+    <!-- Metalen onderstructuren -->
+    <a href="product-metalen-onderstructuren.html" class="product-card fade-in" data-cat="vast" style="transition-delay:.2s">
+      <span class="card-tag">Vast — 04</span>
+      <svg class="card-icon" viewBox="0 0 56 56" fill="none">
+        <path d="M10 34 Q10 18 28 14 Q46 18 46 34" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" fill="none"/>
+        <rect x="12" y="32" width="9" height="13" rx="1.5" stroke="white" stroke-width="1.5" fill="none"/>
+        <rect x="24" y="28" width="9" height="17" rx="1.5" stroke="white" stroke-width="1.5" fill="none"/>
+        <rect x="36" y="32" width="9" height="13" rx="1.5" stroke="white" stroke-width="1.5" fill="none"/>
+        <path d="M12 45 L12 50 Q12 54 18 54 L38 54 Q44 54 44 50 L44 45" stroke="rgba(255,255,255,0.4)" stroke-width="1.2" fill="none"/>
+      </svg>
+      <div class="card-name">Metalen onderstructuren</div>
+      <p class="card-desc">Digitaal gefreesd in kobalt-chroom of titanium. Sterke en nauwkeurige basis voor protheses, kroonkappen en brugconstructies.</p>
+      <div class="card-specs">
+        <div class="card-spec"><span class="spec-label">Materiaal</span><span class="spec-value">CoCr · Titanium</span></div>
+        <div class="card-spec"><span class="spec-label">Levertijd</span><span class="spec-value">5 werkdagen</span></div>
+        <div class="card-spec"><span class="spec-label">Aanlevering</span><span class="spec-value">Scan of afdruk</span></div>
+      </div>
+      <span class="card-link">Bekijk product</span>
+    </a>
+
+    <!-- Splints -->
+    <a href="product-splints.html" class="product-card fade-in" data-cat="therapeutisch" style="transition-delay:.25s">
+      <span class="card-tag">Therapeutisch — 05</span>
+      <svg class="card-icon" viewBox="0 0 56 56" fill="none">
+        <path d="M8 28 C8 14 16 8 28 7 C40 8 48 14 48 28 C48 38 40 44 28 45 C16 44 8 38 8 28Z" stroke="white" stroke-width="1.5" fill="none"/>
+        <path d="M14 28 C14 18 20 14 28 13 C36 14 42 18 42 28 C42 35 37 39 28 40 C19 39 14 35 14 28Z" stroke="rgba(255,255,255,0.25)" stroke-width="0.8" fill="none"/>
+        <path d="M16 22 L22 18 L28 16 L34 18 L40 22" stroke="rgba(255,255,255,0.3)" stroke-width="0.9" fill="none"/>
+      </svg>
+      <div class="card-name">Splints</div>
+      <p class="card-desc">Digitaal vervaardigde occlusale spalken in PMMA. Alle types beschikbaar: Michigan, relaxatie, opbeetplaat en repositiespalken.</p>
+      <div class="card-specs">
+        <div class="card-spec"><span class="spec-label">Materiaal</span><span class="spec-value">PMMA (gefreesd)</span></div>
+        <div class="card-spec"><span class="spec-label">Levertijd</span><span class="spec-value">5 werkdagen</span></div>
+        <div class="card-spec"><span class="spec-label">Aanlevering</span><span class="spec-value">Scan of afdruk</span></div>
+      </div>
+      <span class="card-link">Bekijk product</span>
+    </a>
+
+    <!-- Reparatie -->
+    <a href="product-reparatie.html" class="product-card fade-in" data-cat="service" style="transition-delay:.3s">
+      <span class="card-tag">Service — 06</span>
+      <svg class="card-icon" viewBox="0 0 56 56" fill="none">
+        <path d="M14 38 C14 24 20 14 28 12 C36 14 42 24 42 38" stroke="white" stroke-width="1.5" fill="none"/>
+        <path d="M20 38 C20 28 23 20 28 18 C33 20 36 28 36 38" stroke="rgba(255,255,255,0.3)" stroke-width="0.8" fill="none"/>
+        <line x1="11" y1="38" x2="45" y2="38" stroke="white" stroke-width="1.5"/>
+        <path d="M22 26 L28 22" stroke="rgba(255,255,255,0.5)" stroke-width="1" stroke-dasharray="3,2"/>
+        <circle cx="28" cy="21" r="2" fill="white" opacity="0.5"/>
+      </svg>
+      <div class="card-name">Reparatie</div>
+      <p class="card-desc">Vakkundige reparatie van alle typen protheses en restauraties. Zelfde dag service beschikbaar. Aanlevering per post of persoonlijk.</p>
+      <div class="card-specs">
+        <div class="card-spec"><span class="spec-label">Spoedservice</span><span class="spec-value">Zelfde dag</span></div>
+        <div class="card-spec"><span class="spec-label">Standaard</span><span class="spec-value">24–48 uur</span></div>
+        <div class="card-spec"><span class="spec-label">Aanlevering</span><span class="spec-value">Post of persoonlijk</span></div>
+      </div>
+      <span class="card-link">Bekijk product</span>
+    </a>
+
+  </div>
+</section>
+
+<div class="cta-strip fade-in">
+  <h2>Niet zeker welk product bij uw patiënt past?</h2>
+  <div class="cta-actions">
+    <a href="mailto:info@prothetika.com" class="btn-primary">Vraag advies</a>
+    <a href="tel:024-6793816" class="btn-ghost">Bel ons</a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-logo">Prothetika</div>
+    </div></div>
+    </div></div>
+  <ul class="footer-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="producten.html">Producten</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="#">Privacy</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Prothetika B.V. · KvK 97872318</div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+setTimeout(() => document.querySelectorAll('.page-hero').forEach(el => el.classList.add('visible')), 50);
+
+function filterCards(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.product-card').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+  });
+}
+</script>
+</body>
+</html>
